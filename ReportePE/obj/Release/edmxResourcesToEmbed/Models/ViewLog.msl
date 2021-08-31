@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CatalogosCSLModelStoreContainer" CdmEntityContainer="CatalogosCSLEntities">
+    <FunctionImportMapping FunctionImportName="consultalogdeimpresion0" FunctionName="CatalogosCSLModel.Store.consultalogdeimpresion0">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CatalogosCSLModel.consultalogdeimpresion0_Result">
+          <ScalarProperty Name="IDRows" ColumnName="IDRows" />
+          <ScalarProperty Name="OrdenTrabajo" ColumnName="OrdenTrabajo" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="Linea" ColumnName="Linea" />
+          <ScalarProperty Name="LineName" ColumnName="LineName" />
+          <ScalarProperty Name="creado" ColumnName="creado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultalogdeimpresionporfechadiaria" FunctionName="CatalogosCSLModel.Store.consultalogdeimpresionporfechadiaria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CatalogosCSLModel.consultalogdeimpresionporfechadiaria_Result">
+          <ScalarProperty Name="IDRows" ColumnName="IDRows" />
+          <ScalarProperty Name="OrdenTrabajo" ColumnName="OrdenTrabajo" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="Linea" ColumnName="Linea" />
+          <ScalarProperty Name="LineName" ColumnName="LineName" />
+          <ScalarProperty Name="creado" ColumnName="creado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultalogdeimpresionporfechadiariaxfecha" FunctionName="CatalogosCSLModel.Store.consultalogdeimpresionporfechadiariaxfecha">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CatalogosCSLModel.consultalogdeimpresionporfechadiariaxfecha_Result">
+          <ScalarProperty Name="IDRows" ColumnName="IDRows" />
+          <ScalarProperty Name="OrdenTrabajo" ColumnName="OrdenTrabajo" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="Linea" ColumnName="Linea" />
+          <ScalarProperty Name="LineName" ColumnName="LineName" />
+          <ScalarProperty Name="creado" ColumnName="creado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultalotespor_ordensql" FunctionName="CatalogosCSLModel.Store.consultalotespor_ordensql">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CatalogosCSLModel.consultalotespor_ordensql_Result">
+          <ScalarProperty Name="IDRows" ColumnName="IDRows" />
+          <ScalarProperty Name="OrdenTrabajo" ColumnName="OrdenTrabajo" />
+          <ScalarProperty Name="Impresa" ColumnName="Impresa" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="VesesImpresa" ColumnName="VesesImpresa" />
+          <ScalarProperty Name="linea" ColumnName="linea" />
+          <ScalarProperty Name="creado" ColumnName="creado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

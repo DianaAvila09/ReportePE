@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CatalogosCSLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CatalogosCSLEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="consultalogdeimpresion0" ReturnType="Collection(CatalogosCSLModel.consultalogdeimpresion0_Result)" />
+    <FunctionImport Name="consultalogdeimpresionporfechadiaria" ReturnType="Collection(CatalogosCSLModel.consultalogdeimpresionporfechadiaria_Result)" />
+    <FunctionImport Name="consultalogdeimpresionporfechadiariaxfecha" ReturnType="Collection(CatalogosCSLModel.consultalogdeimpresionporfechadiariaxfecha_Result)">
+      <Parameter Name="fecha1" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="consultalotespor_ordensql" ReturnType="Collection(CatalogosCSLModel.consultalotespor_ordensql_Result)">
+      <Parameter Name="orden" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="consultalogdeimpresion0_Result">
+    <Property Type="Int32" Name="IDRows" Nullable="false" />
+    <Property Type="String" Name="OrdenTrabajo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lote" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Linea" Nullable="true" />
+    <Property Type="String" Name="LineName" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="creado" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="consultalogdeimpresionporfechadiaria_Result">
+    <Property Type="Int32" Name="IDRows" Nullable="false" />
+    <Property Type="String" Name="OrdenTrabajo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lote" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHA" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Linea" Nullable="true" />
+    <Property Type="String" Name="LineName" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="creado" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="consultalogdeimpresionporfechadiariaxfecha_Result">
+    <Property Type="Int32" Name="IDRows" Nullable="false" />
+    <Property Type="String" Name="OrdenTrabajo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lote" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHA" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Linea" Nullable="true" />
+    <Property Type="String" Name="LineName" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="creado" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="consultalotespor_ordensql_Result">
+    <Property Type="Int32" Name="IDRows" Nullable="false" />
+    <Property Type="String" Name="OrdenTrabajo" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Impresa" Nullable="true" />
+    <Property Type="String" Name="Lote" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="User" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHA" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="VesesImpresa" Nullable="true" />
+    <Property Type="Int32" Name="linea" Nullable="true" />
+    <Property Type="DateTime" Name="creado" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>

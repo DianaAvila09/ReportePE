@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Logs_AplicacionesModelStoreContainer" CdmEntityContainer="Logs_AplicacionesEntities">
+    <EntitySetMapping Name="Log_Asistencia_EntradaCSL">
+      <EntityTypeMapping TypeName="Logs_AplicacionesModel.Log_Asistencia_EntradaCSL">
+        <MappingFragment StoreEntitySet="Log_Asistencia_EntradaCSL">
+          <ScalarProperty Name="TempSalida" ColumnName="TempSalida" />
+          <ScalarProperty Name="Salida" ColumnName="Salida" />
+          <ScalarProperty Name="MyLife" ColumnName="MyLife" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spr_log_Conciliacion" FunctionName="Logs_AplicacionesModel.Store.spr_log_Conciliacion" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_rango_fecha" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_rango_fecha">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Logs_AplicacionesModel.spr_consulta_rango_fecha_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="MyLife" ColumnName="MyLife" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spr_consulta_mylife" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_mylife" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_mylife_no" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_mylife_no" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_temp" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_temp" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_temp_rojo" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_temp_rojo" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_Milife_porcentaje" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_Milife_porcentaje" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_Milife_porcentaje_No" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_Milife_porcentaje_No" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_Milife_temperaturaporcentaje" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_Milife_temperaturaporcentaje" />
+    <FunctionImportMapping FunctionImportName="spr_consulta_Milife_temperaturaporcentaje_nook" FunctionName="Logs_AplicacionesModel.Store.spr_consulta_Milife_temperaturaporcentaje_nook" />
+  </EntityContainerMapping>
+</Mapping>

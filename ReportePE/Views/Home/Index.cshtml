@@ -1,0 +1,550 @@
+﻿@model IEnumerable<ReportePE.Models.Cambiodetroquel>
+
+@{
+    ViewBag.Title = "Bienvenido";
+}
+<style>
+    small, .small {
+        font-size: 125%;
+    }
+
+    .progress .progress-label:before {
+        font-size: 10px;
+        margin-top: 12px;
+        margin-right: -25px;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 500px;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: left;
+        margin-left: 25px;
+    }
+
+    [type="search"] {
+        height: 35px;
+        margin-right: 20px;
+    }
+
+    .table th, .table td {
+        padding: 0.2rem 0.5rem;
+    }
+
+    body {
+        font-size: 10px;
+    }
+
+    html body .content .content-wrapper .content-header-title {
+        color: #121213;
+        margin-right: 1rem;
+        border-right: 1px solid #1a1a1b;
+    }
+
+
+    table {
+        overflow: hidden;
+    }
+
+    tr:hover {
+        background-color: #ffa;
+    }
+
+    td, th {
+        position: relative;
+    }
+
+        td:hover::after,
+        th:hover::after {
+            content: "";
+            position: absolute;
+            background-color: #ffa;
+            left: 0;
+            top: -5000px;
+            height: 10000px;
+            width: 100%;
+            z-index: -1;
+        }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+    window.onload = function () {
+
+        pantalla = document.getElementById("screen");
+    }
+    var isMarch = false;
+    var acumularTime = 0;
+    function start(fecha) {
+        if (isMarch == false) {
+            timeInicial = fecha;
+            control = setInterval(cronometro, 10);
+            isMarch = true;
+        }
+    }
+    function cronometro() {
+        timeActual = new Date();
+        acumularTime = timeActual - timeInicial;
+        acumularTime2 = new Date();
+        acumularTime2.setTime(acumularTime);
+        cc = Math.round(acumularTime2.getMilliseconds() / 10);
+        ss = acumularTime2.getSeconds();
+        mm = acumularTime2.getMinutes();
+        hh = acumularTime2.getHours() - 18;
+        if (cc < 10) { cc = "0" + cc; }
+        if (ss < 10) { ss = "0" + ss; }
+        if (mm < 10) { mm = "0" + mm; }
+
+        pantalla.innerHTML = hh + " : " + mm + " : " + ss;
+    }
+
+    function stop() {
+        if (isMarch == true) {
+            clearInterval(control);
+            isMarch = false;
+        }
+    }
+
+    function resume() {
+        if (isMarch == false) {
+            timeActu2 = new Date();
+            timeActu2 = timeActu2.getTime();
+            acumularResume = timeActu2 - acumularTime;
+
+            timeInicial.setTime(acumularResume);
+            control = setInterval(cronometro, 10);
+            isMarch = true;
+        }
+    }
+
+    function reset() {
+        if (isMarch == true) {
+            clearInterval(control);
+            isMarch = false;
+        }
+        acumularTime = 0;
+        pantalla.innerHTML = "00 : 00 : 00";
+    }
+</script>
+
+<script src="~/app-assets/js/core/libraries/jquery.min.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        var pIdLinea = 0;
+        if ($('#IdLinea').val() != "")
+            pIdLinea = $('#IdLinea').val();
+            $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Views", "Home")',
+            dataType: 'json',
+                data: { IdLinea: pIdLinea },
+                   success: function (data) {
+                       var newHtml = '';                       
+                       var i;
+                       $("#llenar").empty();
+
+                       for (i = 0; i < data.length; i++) {
+
+
+                           var pattern = /Date\(([^)]+)\)/;
+                           var results = pattern.exec(data[i].INICIO);
+                           var dt = new Date(parseFloat(results[1]));
+                           var INICIO = dt.toLocaleTimeString();
+
+                           var FIN = "";
+                           if (data[i].FIN != null) {
+                               var results1 = pattern.exec(data[i].FIN);
+                               var dt1 = new Date(parseFloat(results1[1]));
+                               FIN = dt1.toLocaleTimeString();
+                           }
+
+                           var RUN = "";
+                           if (data[i].RUN != null) {
+                               var results2 = pattern.exec(data[i].RUN);
+                               var dt2 = new Date(parseFloat(results2[1]));
+                               RUN = dt2.toLocaleTimeString();
+                           }
+
+                           var TOTALHTH = 0;
+                           if (data[i].TOTALHTH != null)
+                               TOTALHTH = data[i].TOTALHTH / 60.00;
+
+                           var TOTAL = 0;
+                           if (data[i].TOTAL != null)
+                                TOTAL =  data[i].TOTAL / 60.00;
+
+
+                           newHtml += '<tr style="font-size:12px;"><td class="py-1 line-ellipsis">';
+
+                           if (data[i].MODELO == "BMW"){
+                               newHtml += '<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/bmw.jpg" alt="card" height="24" width="24">';
+                           } else if (data[i].MODELO == "Mercedes") {
+                               newHtml += '<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/mercede.png" alt="card" height="24" width="24">';
+                           }else {
+                               newHtml += '<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">';
+                           }
+
+                           newHtml += '' + data[i].NOMBRE + '</td>' +
+
+
+                               '<td class="py-1 line-ellipsis">' + INICIO + '</td>' +
+
+                               '<td class="py-1 line-ellipsis">' + FIN + '</td>' +
+                               '<td class="py-1 line-ellipsis">' + RUN + '</td>';
+
+
+                           newHtml += '<td class="py-1 text-center">';
+
+                           if (TOTALHTH != 0) {
+                               if (TOTALHTH <= 5.5) {
+
+                                   newHtml += '<i class="bx bx-trending-up text-success align-middle mr-50"></i>';
+                               }
+                               else {
+                                   newHtml += '<i class="bx bx-trending-down text-danger align-middle mr-50"></i>';
+                               }
+
+
+                               newHtml += TOTALHTH.toFixed(2) + '</td>';
+                           } else {
+                               newHtml += '</td>';
+                           }
+                               '<td class="py-1 text-center">';
+                           if (TOTAL != 0) {
+                               if (TOTAL <= 7) {
+
+                                   newHtml += '<i class="bx bx-trending-up text-success align-middle mr-50"></i>';
+                               }
+                               else {
+                                   newHtml += '<i class="bx bx-trending-down text-danger align-middle mr-50"></i>';
+                               }
+
+
+                               newHtml += TOTAL.toFixed(2) + '</td>' +
+                                   '</tr>';
+                           } else {
+                               newHtml += '</td>' +
+                                   '</tr>';
+                           }
+                       }
+
+                       $('#llenar').html(newHtml);
+
+
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+
+
+
+
+    });
+    setInterval('news()', 3000);
+    function news() {
+        var pIdLinea = 0;
+        if ($('#IdLinea').val() != "")
+            pIdLinea = $('#IdLinea').val();
+       
+               $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Views", "Home")',
+            dataType: 'json',
+                   data: { IdLinea: pIdLinea },
+                   success: function (data) {
+                       var newHtml = '';
+
+                       var i;
+                       $("#llenar").empty();
+
+                       for (i = 0; i < data.length; i++) {
+
+
+                           var pattern = /Date\(([^)]+)\)/;
+                           var results = pattern.exec(data[i].INICIO);
+                           //alert(data[i].INICIO);
+                           var dt = new Date(parseFloat(results[1]));
+                           var INICIO = dt.toLocaleDateString("en-US") + " " + dt.toLocaleTimeString("en-US");
+
+
+                           var FIN = "";
+                           if (data[i].FIN != null) {
+                               var results1 = pattern.exec(data[i].FIN);
+                               var dt1 = new Date(parseFloat(results1[1]));
+                               FIN = dt1.toLocaleTimeString();
+                           }
+
+                           var RUN = "";
+                           if (data[i].RUN != null) {
+                               var results2 = pattern.exec(data[i].RUN);
+                               var dt2 = new Date(parseFloat(results2[1]));
+                               RUN = dt2.toLocaleTimeString();
+                           }
+
+                           var TOTALHTH = 0;
+                           if (data[i].TOTALHTH != null)
+                               TOTALHTH = data[i].TOTALHTH / 60.00;
+
+                           var TOTAL = 0;
+                           if (data[i].TOTAL != null)
+                               TOTAL = data[i].TOTAL / 60.00;
+
+
+                           newHtml += '<tr style="font-size:12px;"><td class="py-1 line-ellipsis">';
+
+                           if (data[i].MODELO == "BMW"){
+                               newHtml += '<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/bmw.jpg" alt="card" height="24" width="24">';
+                           }else if (data[i].MODELO == "Mercedes") {
+                               newHtml += '<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/mercede.png" alt="card" height="24" width="24">';
+                           }else {
+                               newHtml += '<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">';
+                           }
+
+                           newHtml += '' + data[i].NOMBRE + '</td>' +
+
+
+                               '<td class="py-1 line-ellipsis">' + INICIO + '</td>' +
+
+                               '<td class="py-1 line-ellipsis">' + FIN + '</td>' +
+                               '<td class="py-1 line-ellipsis">' + RUN + '</td>';
+
+
+                           newHtml += '<td class="py-1 text-center">';
+                           if (TOTALHTH != 0) {
+                               if (TOTALHTH <= 5.5) {
+
+                                   newHtml += '<i class="bx bx-trending-up text-success align-middle mr-50"></i>';
+                               }
+                               else {
+                                   newHtml += '<i class="bx bx-trending-down text-danger align-middle mr-50"></i>';
+                               }
+
+
+                               newHtml += TOTALHTH.toFixed(2) + '</td>';
+                           } else {
+                               newHtml += '</td>';
+                           }
+
+
+                           newHtml += '<td class="py-1 text-center">';
+
+                           if (TOTAL != 0) {
+                               if (TOTAL <= 7) {
+
+                                   newHtml += '<i class="bx bx-trending-up text-success align-middle mr-50"></i>';
+                               }
+                               else {
+                                   newHtml += '<i class="bx bx-trending-down text-danger align-middle mr-50"></i>';
+                               }
+
+
+                               newHtml += TOTAL.toFixed(2) + '</td>' +
+                                   '</tr>';
+                           } else {
+                               newHtml += '</td>' +
+                                   '</tr>';
+                           }
+                       }
+                       $('#llenar').html(newHtml);
+
+
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+               });
+
+              $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Views2", "Home")',
+            dataType: 'json',
+            data: { IdLinea : document.getElementById("IdLinea").value },
+                   success: function (data) {
+                       //linea();
+                       if (data.length == 0) {
+                           stop();
+                           reset();
+                       } else {
+                           var pattern = /Date\(([^)]+)\)/;
+                           var results = pattern.exec(data[0].INICIO);
+                           //alert(data[i].INICIO);
+                           var dt = new Date(parseFloat(results[1]));                           
+                           start(dt);
+                       }
+
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+              });
+
+        function linea() {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("Lineas", "Home")',
+                dataType: 'json',
+                data: { /*linea: 1*/ },
+                success: function (data) {
+                    $('#IdLinea').append('<option value="">[- TODAS LAS LINEAS -]</option>');
+                    $.each(data, function (key, registro) {
+                        $('#IdLinea').append('<option value=' + registro.IdPrensa + '>' + registro.Descripcion + '</option>');
+                    });
+                   
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    alert("Message: " + r.Message);
+                    alert("StackTrace: " + r.StackTrace);
+                    alert("ExceptionType: " + r.ExceptionType);
+                }
+            });
+        }
+
+
+    }
+
+</script>
+<div class="content-wrapper">
+
+
+    <div class="content-body">
+        <section id="dashboard-ecommerce">
+            <div class="row text-md-center">
+                <div class="col">
+                    <br />
+                    <div class="chronometer" style="        font-size: 200px; position: relative;
+                                top: -100px;
+                                color: black;">
+                        <div id="screen">00 : 00</div>
+
+
+                    </div>
+                    <br />
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="col-xl-12 " style="position: relative;
+                                top: -150px;
+                                color: black;">
+                        <div class="card marketing-campaigns">
+                            <div class="card-header d-flex justify-content-between  pb-1">
+
+                                
+                                    <a class="btn btn-sm btn-primary glow" href="javascript:Enviar();" style="position:absolute; float:left">View Report</a>
+                                
+                                <h1 class="card-title" style="color:black; margin-left:120px">Cambio de Troquel</h1>
+                                       <select id="IdLinea" name="IdLinea" class="form-control" style="width:200px;" onchange="javascript:Inicio();">
+                                           <option value="0">[ LINEAS ]</option>
+                                           <option value="31">LINEA A</option>
+                                           <option value="32">LINEA D</option>
+                                           <option value="37">ZETA 5</option>
+                                           <option value="38">ZETA 4</option>
+                                       </select>
+
+                            </div>
+                            <div class="table-responsive">
+                                <!-- table start -->
+                                <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Línea</th>
+                                            <th>INICIO</th>
+                                            <th>FIN</th>
+                                            <th>RUN</th>
+                                            <th class="text-center">HTH</th>
+                                            <th class="text-center">HTR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="llenar">
+
+                                        @*@foreach (var item in Model)
+                                            {
+                                                <tr>
+
+                                                    <td class="py-1 line-ellipsis">
+                                                        @if (item.MODELO == "BMW")
+                                                        {<img class="rounded-circle mr-1" src="../../../app-assets/images/icon/bmw.jpg" alt="card" height="24" width="24">}
+                                                        @if (item.MODELO == "Mercedes")
+                                                        {<img class="rounded-circle mr-1" src="../../../app-assets/images/icon/mercede.png" alt="card" height="24" width="24">}
+                                                        @if (item.MODELO == "MAGNA")
+                                                        {<img class="rounded-circle mr-1" src="../../../app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">}
+
+                                                        @Html.DisplayFor(modelItem => item.NOMBRE)
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+
+                                                        @String.Format("{0:T}", item.INICIO)
+
+
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+                                                        @String.Format("{0:T}", item.FIN)
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+                                                        @String.Format("{0:T}", item.RUN)
+                                                    </td>
+                                                    <td class="py-1 text-center">
+                                                        @if (((item.TOTALHTH) / 60.00) <= 5.5)
+                                                        {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
+                                                        else
+                                                        { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
+                                                        @String.Format("{0:n2}", ((item.TOTALHTH) / 60.00))
+                                                    </td>
+                                                    <td class="py-1 text-center">
+                                                        @if (((item.TOTAL) / 60.00) <= 7)
+                                                        {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
+                                                        else
+                                                        { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
+                                                        @String.Format("{0:n2}", ((item.TOTAL) / 60.00))
+                                                    </td>
+
+
+                                                </tr>
+                                            }*@
+
+
+                                    </tbody>
+                                </table>
+                                <!-- table ends -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </section>
+
+
+    </div>
+</div>
+<script>
+    var IdLinea = "" + @ViewBag.IdLinea;
+    if (IdLinea != 0)
+        document.getElementById("IdLinea").value = IdLinea;
+   
+</script>

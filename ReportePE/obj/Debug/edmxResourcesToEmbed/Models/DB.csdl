@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Logs_AplicacionesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Log_Asistencia_EntradaCSL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Temperatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MyLife" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TempSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Logs_AplicacionesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Log_Asistencia_EntradaCSL" EntityType="Self.Log_Asistencia_EntradaCSL" />
+    <FunctionImport Name="spr_log_Conciliacion">
+      <Parameter Name="Proyecto" Mode="In" Type="String" />
+      <Parameter Name="Material" Mode="In" Type="String" />
+      <Parameter Name="Linea" Mode="In" Type="String" />
+      <Parameter Name="PLC" Mode="In" Type="Int32" />
+      <Parameter Name="NAutomatica" Mode="In" Type="Int32" />
+      <Parameter Name="RAutomatica" Mode="In" Type="Int32" />
+      <Parameter Name="NManual" Mode="In" Type="Int32" />
+      <Parameter Name="RManual" Mode="In" Type="Int32" />
+      <Parameter Name="Std" Mode="In" Type="Int32" />
+      <Parameter Name="NAScrap" Mode="In" Type="Int32" />
+      <Parameter Name="RAScrap" Mode="In" Type="Int32" />
+      <Parameter Name="NMScrap" Mode="In" Type="Int32" />
+      <Parameter Name="RMScrap" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spr_consulta_rango_fecha" ReturnType="Collection(Logs_AplicacionesModel.spr_consulta_rango_fecha_Result)">
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spr_consulta_mylife" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="spr_consulta_mylife_no" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="spr_consulta_temp" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="spr_consulta_temp_rojo" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="spr_consulta_Milife_porcentaje" ReturnType="Collection(Decimal)" />
+    <FunctionImport Name="spr_consulta_Milife_porcentaje_No" ReturnType="Collection(Decimal)" />
+    <FunctionImport Name="spr_consulta_Milife_temperaturaporcentaje" ReturnType="Collection(Decimal)" />
+    <FunctionImport Name="spr_consulta_Milife_temperaturaporcentaje_nook" ReturnType="Collection(Decimal)" />
+  </EntityContainer>
+  <ComplexType Name="spr_consulta_rango_fecha_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Temperatura" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ruta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Hora" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Codigo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MyLife" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

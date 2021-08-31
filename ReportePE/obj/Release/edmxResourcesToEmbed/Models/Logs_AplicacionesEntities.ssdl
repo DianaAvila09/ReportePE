@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Logs_AplicacionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Log_Asistencia_EntradaCSL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Temperatura" Type="varchar" MaxLength="50" />
+    <Property Name="Ruta" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha" Type="varchar" MaxLength="50" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="Codigo" Type="varchar" MaxLength="50" />
+    <Property Name="MyLife" Type="varchar" MaxLength="50" />
+    <Property Name="Salida" Type="varchar" MaxLength="50" />
+    <Property Name="TempSalida" Type="varchar" MaxLength="50" />
+    <Property Name="Departamento" Type="varchar" MaxLength="50" />
+    <Property Name="Empresa" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="spr_consulta_Milife_porcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-porcentaje" />
+  <Function Name="spr_consulta_Milife_porcentaje2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-porcentaje2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_Milife_porcentaje_No" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-porcentaje-No" />
+  <Function Name="spr_consulta_Milife_porcentaje_No2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-porcentaje-No2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_Milife_temperaturaporcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-temperaturaporcentaje" />
+  <Function Name="spr_consulta_Milife_temperaturaporcentaje2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-temperaturaporcentaje2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_Milife_temperaturaporcentaje_nook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-temperaturaporcentaje-nook" />
+  <Function Name="spr_consulta_Milife_temperaturaporcentaje_nook2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-Milife-temperaturaporcentaje-nook2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_mylife" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-mylife" />
+  <Function Name="spr_consulta_mylife2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-mylife2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_mylife_no" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-mylife-no" />
+  <Function Name="spr_consulta_mylife_no2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-mylife-no2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_rango_fecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-rango-fecha">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-temp" />
+  <Function Name="spr_consulta_temp2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-temp2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_consulta_temp_rojo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-temp-rojo" />
+  <Function Name="spr_consulta_temp_rojo2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="spr_consulta-temp-rojo2">
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Fecha2" Type="date" Mode="In" />
+  </Function>
+  <Function Name="spr_log_Conciliacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Proyecto" Type="varchar" Mode="In" />
+    <Parameter Name="Material" Type="varchar" Mode="In" />
+    <Parameter Name="Linea" Type="varchar" Mode="In" />
+    <Parameter Name="PLC" Type="int" Mode="In" />
+    <Parameter Name="NAutomatica" Type="int" Mode="In" />
+    <Parameter Name="RAutomatica" Type="int" Mode="In" />
+    <Parameter Name="NManual" Type="int" Mode="In" />
+    <Parameter Name="RManual" Type="int" Mode="In" />
+    <Parameter Name="Std" Type="int" Mode="In" />
+    <Parameter Name="NAScrap" Type="int" Mode="In" />
+    <Parameter Name="RAScrap" Type="int" Mode="In" />
+    <Parameter Name="NMScrap" Type="int" Mode="In" />
+    <Parameter Name="RMScrap" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="Logs_AplicacionesModelStoreContainer">
+    <EntitySet Name="Log_Asistencia_EntradaCSL" EntityType="Self.Log_Asistencia_EntradaCSL" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

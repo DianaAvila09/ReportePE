@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSL_CON_OPCModelStoreContainer" CdmEntityContainer="CSL_CON_OPCEntities">
+    <EntitySetMapping Name="Cambiodetroquels">
+      <EntityTypeMapping TypeName="CSL_CON_OPCModel.Cambiodetroquel">
+        <MappingFragment StoreEntitySet="Cambiodetroquel">
+          <ScalarProperty Name="BANDERA" ColumnName="BANDERA" />
+          <ScalarProperty Name="TOTALHTH" ColumnName="TOTALHTH" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+          <ScalarProperty Name="RUN" ColumnName="RUN" />
+          <ScalarProperty Name="FIN" ColumnName="FIN" />
+          <ScalarProperty Name="INICIO" ColumnName="INICIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="IDLINEA" ColumnName="IDLINEA" />
+          <ScalarProperty Name="NO_RECETA" ColumnName="NO_RECETA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRENSAS_Cat_NombresLinea">
+      <EntityTypeMapping TypeName="CSL_CON_OPCModel.PRENSAS_Cat_NombresLinea">
+        <MappingFragment StoreEntitySet="PRENSAS_Cat_NombresLinea">
+          <ScalarProperty Name="VelocidadGenerica" ColumnName="VelocidadGenerica" />
+          <ScalarProperty Name="MaxReport" ColumnName="MaxReport" />
+          <ScalarProperty Name="ReporteoSAP" ColumnName="ReporteoSAP" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Tipo_Turno" ColumnName="Tipo_Turno" />
+          <ScalarProperty Name="Maquina" ColumnName="Maquina" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Trabajando" ColumnName="Trabajando" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdPrensa" ColumnName="IdPrensa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

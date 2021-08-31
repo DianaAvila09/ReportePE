@@ -1,0 +1,429 @@
+﻿@model IEnumerable<ReportePE.Models.spr_consulta_rango_fecha_prensa_Result>
+
+@{
+    ViewBag.Title = "newww";
+}
+
+<h2>newww</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RECETA_ACTUAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Counter_Recipe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Height_Press1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Height_Press2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Height_Press3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Height_Press4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Height_Press5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Height_Press6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Max_Pressure_P1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Max_Pressure_P2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Max_Pressure_P3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Max_Pressure_P4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Max_Pressure_P5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Max_Pressure_P6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press1_Ton1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press1_Ton2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press1_Ton3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press1_Ton4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press2_Ton1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press2_Ton2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press2_Ton3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press2_Ton4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press3_Ton1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press3_Ton2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press3_Ton3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press3_Ton4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press4_Ton1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press4_Ton2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press4_Ton3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press4_Ton4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press5_Ton1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press5_Ton2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press5_Ton3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press5_Ton4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press6_Ton1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press6_Ton2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press6_Ton3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Press6_Ton4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Speed_Line)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point1_real)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point1_theoric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point2_real)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point2_theoric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point3_real)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point3_theoric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point4_real)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point4_theoric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point5_real)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point5_theoric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point6_real)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Pressure_point6_theoric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_LH_P1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_RH_P1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_LH_P2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_RH_P2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_LH_P3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_RH_P3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_LH_P4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_RH_P4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_LH_P5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_RH_P5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_LH_P6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IT_TROQUELES_Bolster_RH_P6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Max_pressure_P1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPEED_LINE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contador_golpes_receta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RECETA_ACTUAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Counter_Recipe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Height_Press1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Height_Press2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Height_Press3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Height_Press4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Height_Press5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Height_Press6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Max_Pressure_P1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Max_Pressure_P2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Max_Pressure_P3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Max_Pressure_P4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Max_Pressure_P5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Max_Pressure_P6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press1_Ton1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press1_Ton2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press1_Ton3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press1_Ton4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press2_Ton1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press2_Ton2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press2_Ton3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press2_Ton4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press3_Ton1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press3_Ton2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press3_Ton3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press3_Ton4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press4_Ton1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press4_Ton2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press4_Ton3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press4_Ton4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press5_Ton1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press5_Ton2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press5_Ton3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press5_Ton4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press6_Ton1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press6_Ton2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press6_Ton3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Press6_Ton4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Speed_Line)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point1_real)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point1_theoric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point2_real)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point2_theoric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point3_real)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point3_theoric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point4_real)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point4_theoric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point5_real)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point5_theoric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point6_real)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Pressure_point6_theoric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_LH_P1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_RH_P1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_LH_P2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_RH_P2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_LH_P3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_RH_P3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_LH_P4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_RH_P4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_LH_P5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_RH_P5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_LH_P6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IT_TROQUELES_Bolster_RH_P6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Max_pressure_P1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SPEED_LINE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contador_golpes_receta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

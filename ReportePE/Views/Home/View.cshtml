@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ReportePE.Models.Cambiodetroquel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TROQUEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INICIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RUN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODELO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TROQUEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RUN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODELO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

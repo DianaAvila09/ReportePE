@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSL_CON_OPCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RapEnsambleEMM.dbo.Cambiodetroquel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Cambiodetroquel">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="INICIO" />
+      <PropertyRef Name="BANDERA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NO_RECETA" Type="int" />
+    <Property Name="IDLINEA" Type="int" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="INICIO" Type="datetime" Nullable="false" />
+    <Property Name="FIN" Type="datetime" />
+    <Property Name="RUN" Type="datetime" />
+    <Property Name="TOTAL" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="MODELO" Type="varchar" MaxLength="50" />
+    <Property Name="TOTALHTH" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="BANDERA" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRENSAS_Cat_NombresLinea">
+    <Key>
+      <PropertyRef Name="IdPrensa" />
+    </Key>
+    <Property Name="IdPrensa" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Trabajando" Type="char" MaxLength="1" />
+    <Property Name="Alias" Type="varchar" MaxLength="2" />
+    <Property Name="Maquina" Type="varchar" MaxLength="25" />
+    <Property Name="Tipo_Turno" Type="varchar" MaxLength="10" />
+    <Property Name="Area" Type="varchar" MaxLength="25" />
+    <Property Name="ReporteoSAP" Type="bit" />
+    <Property Name="MaxReport" Type="int" />
+    <Property Name="VelocidadGenerica" Type="int" />
+  </EntityType>
+  <EntityContainer Name="CSL_CON_OPCModelStoreContainer">
+    <EntitySet Name="PRENSAS_Cat_NombresLinea" EntityType="Self.PRENSAS_Cat_NombresLinea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cambiodetroquel" EntityType="Self.Cambiodetroquel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Cambiodetroquel].[ID] AS [ID], 
+    [Cambiodetroquel].[NO_RECETA] AS [NO_RECETA], 
+    [Cambiodetroquel].[IDLINEA] AS [IDLINEA], 
+    [Cambiodetroquel].[NOMBRE] AS [NOMBRE], 
+    [Cambiodetroquel].[INICIO] AS [INICIO], 
+    [Cambiodetroquel].[FIN] AS [FIN], 
+    [Cambiodetroquel].[RUN] AS [RUN], 
+    [Cambiodetroquel].[TOTAL] AS [TOTAL], 
+    [Cambiodetroquel].[MODELO] AS [MODELO], 
+    [Cambiodetroquel].[TOTALHTH] AS [TOTALHTH], 
+    [Cambiodetroquel].[BANDERA] AS [BANDERA]
+    FROM [dbo].[Cambiodetroquel] AS [Cambiodetroquel]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

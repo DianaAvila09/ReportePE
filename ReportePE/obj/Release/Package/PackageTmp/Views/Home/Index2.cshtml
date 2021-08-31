@@ -1,0 +1,285 @@
+﻿@model IEnumerable<ReportePE.Models.Cambiodetroquel>
+
+@{
+    ViewBag.Title = "Bienvenido";
+}
+<style>
+    small, .small {
+        font-size: 125%;
+    }
+
+    .progress .progress-label:before {
+        font-size: 10px;
+        margin-top: 12px;
+        margin-right: -25px;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 500px;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: left;
+        margin-left: 25px;
+    }
+
+    [type="search"] {
+        height: 35px;
+        margin-right: 20px;
+    }
+
+    .table th, .table td {
+        padding: 0.2rem 0.5rem;
+    }
+
+    body {
+        font-size: 10px;
+    }
+
+    html body .content .content-wrapper .content-header-title {
+        color: #121213;
+        margin-right: 1rem;
+        border-right: 1px solid #1a1a1b;
+    }
+
+
+    table {
+        overflow: hidden;
+    }
+
+    tr:hover {
+        background-color: #ffa;
+    }
+
+    td, th {
+        position: relative;
+    }
+
+        td:hover::after,
+        th:hover::after {
+            content: "";
+            position: absolute;
+            background-color: #ffa;
+            left: 0;
+            top: -5000px;
+            height: 10000px;
+            width: 100%;
+            z-index: -1;
+        }
+</style>
+
+
+<script>
+
+
+
+
+
+
+    function exportTableToExcel(tableID, filename = 'Report HTH & HTR') {
+
+        var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+        if (es_chrome) {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+
+        }
+        else
+            var downloadLink;
+        var dataType = 'application/ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace('%20', 'ufeff');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        }
+
+
+
+    }
+
+
+
+</script>
+<div class="content-body">
+    <!-- table Transactions start -->
+    <section id="table-transactions">
+        <div class="card">
+            <div class="card-header" style="margin:20PX">
+                <!-- head -->
+                <h5 class="card-title">Report HTH & HTR</h5>
+                <!-- Single Date Picker and button -->
+                <div class="heading-elements">
+                    <form method="get" action="@Url.Action("Datefilter", "Home")">
+                        <ul class="list-inline mb-0">
+
+                            <li>
+                                <fieldset class="has-icon-left">
+                                    <input type="text" id="inicio" name="inicio" value="@ViewBag.fin" class="form-control single-daterange" />
+                                    <div class="form-control-position">
+                                        <i class="bx bx-calendar font-medium-1"></i>
+                                    </div>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset class="has-icon-left">
+                                    <input type="text" id="fin" value="@ViewBag.fin" name="fin" class="form-control single-daterange" />
+                                    <div class="form-control-position">
+                                        <i class="bx bx-calendar font-medium-1"></i>
+                                    </div>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <select id="IdLinea" name="IdLinea" class="form-control" style="width:200px;">
+                                        <option value="0">[ LINEAS ]</option>
+                                        <option value="31">LINEA A</option>
+                                        <option value="32">LINEA D</option>
+                                        <option value="37">ZETA 5</option>
+                                        <option value="38">ZETA 4</option>                                        
+                                    </select>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset class="has-icon-left">
+                                    <button class="btn btn-primary ">Search</button>
+                                </fieldset>
+                            </li>
+                        </ul>
+                    </form>
+
+
+                </div>
+
+            </div>
+            <div class="content-wrapper">
+                <button class="btn btn-primary" onclick="exportTableToExcel('table-marketing-campaigns')">Export to Excel</button>
+
+
+                <div class="content-body">
+
+                    <section id="dashboard-ecommerce">
+
+
+
+                        <div class="col-xl-12 ">
+                            <div class="card marketing-campaigns">
+                                <div class="card-header d-flex justify-content-between  pb-1">
+
+                                </div>
+                                <div class="table-responsive">
+                                    <!-- table start -->
+                                    <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Línea</th>
+                                                <th>INICIO</th>
+                                                <th>FIN</th>
+                                                <th>RUN</th>
+                                                <th class="text-center">HTH</th>
+                                                <th class="text-center">HTR</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="llenar">
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr style="font-size:12px;">
+
+                                                    <td class="py-1 line-ellipsis">
+                                                        @if (item.MODELO == "BMW")
+                                                        {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/bmw.jpg" alt="card" height="24" width="24">}
+                                                        @if (item.MODELO == "Mercedes")
+                                                        {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/mercede.png" alt="card" height="24" width="24">}
+                                                        @if (item.MODELO == "MAGNA" || item.MODELO == "")
+                                                        {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">}
+
+                                                        @Html.DisplayFor(modelItem => item.NOMBRE)
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+                                                        @String.Format("{0:M/d/yyyy}", item.INICIO) @String.Format("{0:T}", item.INICIO)
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+                                                        @String.Format("{0:T}", item.FIN)
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+                                                        @String.Format("{0:T}", item.RUN)
+                                                    </td>
+                                                    <td class="py-1 text-center">
+                                                        @if (((item.TOTALHTH) / 60.00) <= 5.5)
+                                                        {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
+                                                        else
+                                                        { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
+                                                        @String.Format("{0:n2}", ((item.TOTALHTH) / 60.00))
+                                                    </td>
+                                                    <td class="py-1 text-center">
+                                                        @if (((item.TOTAL) / 60.00) <= 7)
+                                                        {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
+                                                        else
+                                                        { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
+                                                        @String.Format("{0:n2}", ((item.TOTAL) / 60.00))
+                                                    </td>
+
+
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                    <!-- table ends -->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- table Transactions end -->
+
+</div>
+<script>
+    var IdLinea = "" + @ViewBag.IdLinea;
+    if (IdLinea != 0)
+        document.getElementById("IdLinea").value = IdLinea;
+</script>

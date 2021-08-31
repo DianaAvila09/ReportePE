@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSL_CON_OPCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CSL_CON_OPCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cambiodetroquels" EntityType="CSL_CON_OPCModel.Cambiodetroquel" />
+    <EntitySet Name="PRENSAS_Cat_NombresLinea" EntityType="CSL_CON_OPCModel.PRENSAS_Cat_NombresLinea" />
+  </EntityContainer>
+  <EntityType Name="Cambiodetroquel">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="INICIO" />
+      <PropertyRef Name="BANDERA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NO_RECETA" Type="Int32" />
+    <Property Name="IDLINEA" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INICIO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FIN" Type="DateTime" Precision="3" />
+    <Property Name="RUN" Type="DateTime" Precision="3" />
+    <Property Name="TOTAL" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TOTALHTH" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="BANDERA" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRENSAS_Cat_NombresLinea">
+    <Key>
+      <PropertyRef Name="IdPrensa" />
+    </Key>
+    <Property Name="IdPrensa" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Trabajando" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Alias" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Maquina" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_Turno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ReporteoSAP" Type="Boolean" />
+    <Property Name="MaxReport" Type="Int32" />
+    <Property Name="VelocidadGenerica" Type="Int32" />
+  </EntityType>
+</Schema>
