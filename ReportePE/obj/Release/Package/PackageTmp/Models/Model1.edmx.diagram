@@ -7,6 +7,7 @@
       <Diagram DiagramId="6d9c0cb905d042c09b25ddf649d985ba" Name="Diagram1">
         <EntityTypeShape EntityType="CSL_CON_OPCModel.Cambiodetroquel" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="CSL_CON_OPCModel.PRENSAS_Cat_NombresLinea" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CSL_CON_OPCModel.vw_CambiodeTroquel" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

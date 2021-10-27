@@ -34,5 +34,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_CambiodeTroquel">
+      <EntityTypeMapping TypeName="CSL_CON_OPCModel.vw_CambiodeTroquel">
+        <MappingFragment StoreEntitySet="vw_CambiodeTroquel">
+          <ScalarProperty Name="NoParte" ColumnName="NoParte" />
+          <ScalarProperty Name="BANDERA" ColumnName="BANDERA" />
+          <ScalarProperty Name="TOTALHTH" ColumnName="TOTALHTH" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+          <ScalarProperty Name="RUN" ColumnName="RUN" />
+          <ScalarProperty Name="FIN" ColumnName="FIN" />
+          <ScalarProperty Name="INICIO" ColumnName="INICIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="IDLINEA" ColumnName="IDLINEA" />
+          <ScalarProperty Name="NO_RECETA" ColumnName="NO_RECETA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

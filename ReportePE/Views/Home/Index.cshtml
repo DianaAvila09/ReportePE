@@ -140,13 +140,16 @@
         var pIdLinea = 0;
         if ($('#IdLinea').val() != "")
             pIdLinea = $('#IdLinea').val();
+        news();
+        return;
+
             $.ajax({
             type: 'GET',
             url: '@Url.Action("Views", "Home")',
             dataType: 'json',
                 data: { IdLinea: pIdLinea },
                    success: function (data) {
-                       var newHtml = '';                       
+                       var newHtml = '';
                        var i;
                        $("#llenar").empty();
 
@@ -241,9 +244,9 @@
             },
             error: function (ex) {
                 var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
             }
         });
 
@@ -251,12 +254,12 @@
 
 
     });
-    setInterval('news()', 3000);
+    setInterval('news()', 30000);
     function news() {
         var pIdLinea = 0;
         if ($('#IdLinea').val() != "")
             pIdLinea = $('#IdLinea').val();
-       
+
                $.ajax({
             type: 'GET',
             url: '@Url.Action("Views", "Home")',
@@ -362,9 +365,9 @@
             },
             error: function (ex) {
                 var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
             }
                });
 
@@ -382,7 +385,7 @@
                            var pattern = /Date\(([^)]+)\)/;
                            var results = pattern.exec(data[0].INICIO);
                            //alert(data[i].INICIO);
-                           var dt = new Date(parseFloat(results[1]));                           
+                           var dt = new Date(parseFloat(results[1]));
                            start(dt);
                        }
 
@@ -406,7 +409,7 @@
                     $.each(data, function (key, registro) {
                         $('#IdLinea').append('<option value=' + registro.IdPrensa + '>' + registro.Descripcion + '</option>');
                     });
-                   
+
                 },
                 error: function (ex) {
                     var r = jQuery.parseJSON(response.responseText);
@@ -450,17 +453,17 @@
                         <div class="card marketing-campaigns">
                             <div class="card-header d-flex justify-content-between  pb-1">
 
-                                
-                                    <a class="btn btn-sm btn-primary glow" href="javascript:Enviar();" style="position:absolute; float:left">View Report</a>
-                                
+
+                                <a class="btn btn-sm btn-primary glow" href="javascript:Enviar();" style="position:absolute; float:left">View Report</a>
+
                                 <h1 class="card-title" style="color:black; margin-left:120px">Cambio de Troquel</h1>
-                                       <select id="IdLinea" name="IdLinea" class="form-control" style="width:200px;" onchange="javascript:Inicio();">
-                                           <option value="0">[ LINEAS ]</option>
-                                           <option value="31">LINEA A</option>
-                                           <option value="32">LINEA D</option>
-                                           <option value="37">ZETA 5</option>
-                                           <option value="38">ZETA 4</option>
-                                       </select>
+                                <select id="IdLinea" name="IdLinea" class="form-control" style="width:200px;" onchange="javascript:Inicio();">
+                                    <option value="0">[ LINEAS ]</option>
+                                    <option value="31">LINEA A</option>
+                                    <option value="32">LINEA D</option>
+                                    <option value="37">ZETA 5</option>
+                                    <option value="38">ZETA 4</option>
+                                </select>
 
                             </div>
                             <div class="table-responsive">
@@ -546,5 +549,5 @@
     var IdLinea = "" + @ViewBag.IdLinea;
     if (IdLinea != 0)
         document.getElementById("IdLinea").value = IdLinea;
-   
+
 </script>

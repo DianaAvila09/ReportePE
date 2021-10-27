@@ -1,12 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CSL_CON_OPCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'RapEnsambleEMM.dbo.Cambiodetroquel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Cambiodetroquel">
     <Key>
       <PropertyRef Name="ID" />
-      <PropertyRef Name="INICIO" />
-      <PropertyRef Name="BANDERA" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NO_RECETA" Type="int" />
@@ -35,22 +31,45 @@ warning 6002: The table/view 'RapEnsambleEMM.dbo.Cambiodetroquel' does not have 
     <Property Name="MaxReport" Type="int" />
     <Property Name="VelocidadGenerica" Type="int" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RapEnsambleEMM.dbo.vw_CambiodeTroquel' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_CambiodeTroquel">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="INICIO" />
+      <PropertyRef Name="BANDERA" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NO_RECETA" Type="int" />
+    <Property Name="IDLINEA" Type="int" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="INICIO" Type="datetime" Nullable="false" />
+    <Property Name="FIN" Type="datetime" />
+    <Property Name="RUN" Type="datetime" />
+    <Property Name="TOTAL" Type="int" />
+    <Property Name="MODELO" Type="varchar" MaxLength="50" />
+    <Property Name="TOTALHTH" Type="int" />
+    <Property Name="BANDERA" Type="bit" Nullable="false" />
+    <Property Name="NoParte" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="CSL_CON_OPCModelStoreContainer">
+    <EntitySet Name="Cambiodetroquel" EntityType="Self.Cambiodetroquel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PRENSAS_Cat_NombresLinea" EntityType="Self.PRENSAS_Cat_NombresLinea" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cambiodetroquel" EntityType="Self.Cambiodetroquel" store:Type="Tables" store:Schema="dbo">
+    <EntitySet Name="vw_CambiodeTroquel" EntityType="Self.vw_CambiodeTroquel" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [Cambiodetroquel].[ID] AS [ID], 
-    [Cambiodetroquel].[NO_RECETA] AS [NO_RECETA], 
-    [Cambiodetroquel].[IDLINEA] AS [IDLINEA], 
-    [Cambiodetroquel].[NOMBRE] AS [NOMBRE], 
-    [Cambiodetroquel].[INICIO] AS [INICIO], 
-    [Cambiodetroquel].[FIN] AS [FIN], 
-    [Cambiodetroquel].[RUN] AS [RUN], 
-    [Cambiodetroquel].[TOTAL] AS [TOTAL], 
-    [Cambiodetroquel].[MODELO] AS [MODELO], 
-    [Cambiodetroquel].[TOTALHTH] AS [TOTALHTH], 
-    [Cambiodetroquel].[BANDERA] AS [BANDERA]
-    FROM [dbo].[Cambiodetroquel] AS [Cambiodetroquel]</DefiningQuery>
+    [vw_CambiodeTroquel].[ID] AS [ID], 
+    [vw_CambiodeTroquel].[NO_RECETA] AS [NO_RECETA], 
+    [vw_CambiodeTroquel].[IDLINEA] AS [IDLINEA], 
+    [vw_CambiodeTroquel].[NOMBRE] AS [NOMBRE], 
+    [vw_CambiodeTroquel].[INICIO] AS [INICIO], 
+    [vw_CambiodeTroquel].[FIN] AS [FIN], 
+    [vw_CambiodeTroquel].[RUN] AS [RUN], 
+    [vw_CambiodeTroquel].[TOTAL] AS [TOTAL], 
+    [vw_CambiodeTroquel].[MODELO] AS [MODELO], 
+    [vw_CambiodeTroquel].[TOTALHTH] AS [TOTALHTH], 
+    [vw_CambiodeTroquel].[BANDERA] AS [BANDERA], 
+    [vw_CambiodeTroquel].[NoParte] AS [NoParte]
+    FROM [dbo].[vw_CambiodeTroquel] AS [vw_CambiodeTroquel]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

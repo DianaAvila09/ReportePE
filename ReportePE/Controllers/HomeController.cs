@@ -50,7 +50,7 @@ namespace ReportePE.Controllers
 
             ViewBag.IdLinea = IdLinea;
 
-            return View(sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList());
+            return View(sp.vw_CambiodeTroquel.Where(a => a.INICIO >= inicio && a.INICIO <= fin && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList());
         }
 
         public ActionResult Datefilter(DateTime inicio, DateTime fin, int IdLinea = 0)
@@ -62,7 +62,7 @@ namespace ReportePE.Controllers
             fin = fin.AddHours(23);
             fin = fin.AddMinutes(59);
 
-            return View(sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList());
+            return View(sp.vw_CambiodeTroquel.Where(a => a.INICIO >= inicio && a.INICIO <= fin && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList());
         }
 
         [HttpGet]
@@ -98,7 +98,7 @@ namespace ReportePE.Controllers
             // ViewBag.HTH = (sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin).Average(a => a.TOTALHTH) / 60.00);
             // ViewBag.HTR = (sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin).Average(a => a.TOTAL) / 60.00);
 
-            return Json(sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin && a.RUN == null && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList(), JsonRequestBehavior.AllowGet);
+            return Json(sp.vw_CambiodeTroquel.Where(a => a.INICIO >= inicio && a.INICIO <= fin && a.RUN == null && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList(), JsonRequestBehavior.AllowGet);
 
         }
 

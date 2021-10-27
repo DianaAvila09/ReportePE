@@ -3,12 +3,11 @@
   <EntityContainer Name="CSL_CON_OPCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cambiodetroquels" EntityType="CSL_CON_OPCModel.Cambiodetroquel" />
     <EntitySet Name="PRENSAS_Cat_NombresLinea" EntityType="CSL_CON_OPCModel.PRENSAS_Cat_NombresLinea" />
+    <EntitySet Name="vw_CambiodeTroquel" EntityType="CSL_CON_OPCModel.vw_CambiodeTroquel" />
   </EntityContainer>
   <EntityType Name="Cambiodetroquel">
     <Key>
       <PropertyRef Name="ID" />
-      <PropertyRef Name="INICIO" />
-      <PropertyRef Name="BANDERA" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NO_RECETA" Type="Int32" />
@@ -36,5 +35,24 @@
     <Property Name="ReporteoSAP" Type="Boolean" />
     <Property Name="MaxReport" Type="Int32" />
     <Property Name="VelocidadGenerica" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_CambiodeTroquel">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="INICIO" />
+      <PropertyRef Name="BANDERA" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NO_RECETA" Type="Int32" />
+    <Property Name="IDLINEA" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INICIO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FIN" Type="DateTime" Precision="3" />
+    <Property Name="RUN" Type="DateTime" Precision="3" />
+    <Property Name="TOTAL" Type="Int32" />
+    <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TOTALHTH" Type="Int32" />
+    <Property Name="BANDERA" Type="Boolean" Nullable="false" />
+    <Property Name="NoParte" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
 </Schema>

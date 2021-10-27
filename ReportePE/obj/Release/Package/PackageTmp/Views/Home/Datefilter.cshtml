@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ReportePE.Models.Cambiodetroquel>
+﻿@model IEnumerable<ReportePE.Models.vw_CambiodeTroquel>
 
 @{
     ViewBag.Title = "Bienvenido";
@@ -211,6 +211,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Línea</th>
+                                                <th>Material</th>
                                                 <th>INICIO</th>
                                                 <th>FIN</th>
                                                 <th>RUN</th>
@@ -222,44 +223,47 @@
 
                                             @foreach (var item in Model)
                                             {
-                                                <tr style="font-size:12px;">
+                                            <tr style="font-size:12px;">
 
-                                                    <td class="py-1 line-ellipsis">
-                                                        @if (item.MODELO == "BMW")
-                                                        {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/bmw.jpg" alt="card" height="24" width="24">}
-                                                        @if (item.MODELO == "Mercedes")
-                                                        {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/mercede.png" alt="card" height="24" width="24">}
-                                                        @if (item.MODELO == "MAGNA" || item.MODELO == "")
-                                                        {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">}
+                                                <td class="py-1 line-ellipsis">
+                                                    @if (item.MODELO == "BMW")
+                                                    {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/bmw.jpg" alt="card" height="24" width="24">}
+                                                    @if (item.MODELO == "Mercedes")
+                                                    {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/mercede.png" alt="card" height="24" width="24">}
+                                                    @if (item.MODELO == "MAGNA" || item.MODELO == "")
+                                                    {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">}
 
-                                                        @Html.DisplayFor(modelItem => item.NOMBRE)
-                                                    </td>
-                                                    <td class="py-1 line-ellipsis">
-                                                        @String.Format("{0:M/d/yyyy}", item.INICIO) @String.Format("{0:T}", item.INICIO)
-                                                    </td>
-                                                    <td class="py-1 line-ellipsis">
-                                                        @String.Format("{0:T}", item.FIN)
-                                                    </td>
-                                                    <td class="py-1 line-ellipsis">
-                                                        @String.Format("{0:T}", item.RUN)
-                                                    </td>
-                                                    <td class="py-1 text-center">
-                                                        @if (((item.TOTALHTH) / 60.00) <= 5.5)
-                                                        {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
-                                                        else
-                                                        { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
-                                                        @String.Format("{0:n2}", ((item.TOTALHTH) / 60.00))
-                                                    </td>
-                                                    <td class="py-1 text-center">
-                                                        @if (((item.TOTAL) / 60.00) <= 7)
-                                                        {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
-                                                        else
-                                                        { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
-                                                        @String.Format("{0:n2}", ((item.TOTAL) / 60.00))
-                                                    </td>
+                                                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                                                </td>
+                                                <td class="py-1 line-ellipsis">
+                                                    @String.Format("{0:M/d/yyyy}", item.NoParte)
+                                                </td>
+                                                <td class="py-1 line-ellipsis">
+                                                    @String.Format("{0:M/d/yyyy}", item.INICIO) @String.Format("{0:T}", item.INICIO)
+                                                </td>
+                                                <td class="py-1 line-ellipsis">
+                                                    @String.Format("{0:T}", item.FIN)
+                                                </td>
+                                                <td class="py-1 line-ellipsis">
+                                                    @String.Format("{0:T}", item.RUN)
+                                                </td>
+                                                <td class="py-1 text-center">
+                                                    @if (((item.TOTALHTH) / 60.00) <= 5.5)
+                                                    {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
+                                                    else
+                                                    { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
+                                                    @String.Format("{0:n2}", ((item.TOTALHTH) / 60.00))
+                                                </td>
+                                                <td class="py-1 text-center">
+                                                    @if (((item.TOTAL) / 60.00) <= 7)
+                                                    {<i class="bx bx-trending-up text-success align-middle mr-50"></i>}
+                                                    else
+                                                    { <i class="bx bx-trending-down text-danger align-middle mr-50"></i>}
+                                                    @String.Format("{0:n2}", ((item.TOTAL) / 60.00))
+                                                </td>
 
 
-                                                </tr>
+                                            </tr>
                                             }
 
 

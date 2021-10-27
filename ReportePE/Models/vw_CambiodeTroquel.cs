@@ -12,7 +12,7 @@ namespace ReportePE.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cambiodetroquel
+    public partial class vw_CambiodeTroquel
     {
         public int ID { get; set; }
         public Nullable<int> NO_RECETA { get; set; }
@@ -25,5 +25,6 @@ namespace ReportePE.Models
         public string MODELO { get; set; }
         public Nullable<int> TOTALHTH { get; set; }
         public bool BANDERA { get; set; }
+        public string NoParte { get; set; }
     }
 }

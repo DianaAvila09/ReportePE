@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ReportePE.Models.Cambiodetroquel>
+﻿@model IEnumerable<ReportePE.Models.vw_CambiodeTroquel>
 
 @{
     ViewBag.Title = "Bienvenido";
@@ -167,7 +167,7 @@
                                         <option value="31">LINEA A</option>
                                         <option value="32">LINEA D</option>
                                         <option value="37">ZETA 5</option>
-                                        <option value="38">ZETA 4</option>                                        
+                                        <option value="38">ZETA 4</option>
                                     </select>
                                 </fieldset>
                             </li>
@@ -204,6 +204,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Línea</th>
+                                                <th>Material</th>
                                                 <th>INICIO</th>
                                                 <th>FIN</th>
                                                 <th>RUN</th>
@@ -226,6 +227,9 @@
                                                         {<img class="rounded-circle mr-1" src="../../HTH/app-assets/images/icon/magna.jpg" alt="card" height="24" width="24">}
 
                                                         @Html.DisplayFor(modelItem => item.NOMBRE)
+                                                    </td>
+                                                    <td class="py-1 line-ellipsis">
+                                                        @String.Format("{0:M/d/yyyy}", item.NoParte)
                                                     </td>
                                                     <td class="py-1 line-ellipsis">
                                                         @String.Format("{0:M/d/yyyy}", item.INICIO) @String.Format("{0:T}", item.INICIO)
