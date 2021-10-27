@@ -38,6 +38,9 @@ namespace ReportePE.Controllers
             return View(sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin && a.BANDERA == false && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList());
         }
 
+     
+
+
         public ActionResult Index2(int IdLinea = 0)
         {
 
@@ -74,9 +77,13 @@ namespace ReportePE.Controllers
             // ViewBag.HTH = (sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin).Average(a => a.TOTALHTH) / 60.00);
             // ViewBag.HTR = (sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin).Average(a => a.TOTAL) / 60.00);
 
-            return Json(sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin && a.BANDERA == false && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList(), JsonRequestBehavior.AllowGet);
+            return Json(sp.Cambiodetroquels.Where((a => IdLinea == 0 || a.IDLINEA == IdLinea)).OrderByDescending(x => x.ID).Take(1).ToList(), JsonRequestBehavior.AllowGet);
+
+            //return Json(sp.Cambiodetroquels.Where(a => a.INICIO >= inicio && a.INICIO <= fin  && (IdLinea == 0 || a.IDLINEA == IdLinea)).OrderBy(b => b.INICIO).ToList().Take(1), JsonRequestBehavior.AllowGet);
 
         }
+
+      
 
         [HttpGet]
         public JsonResult Views2(int IdLinea = 0)
